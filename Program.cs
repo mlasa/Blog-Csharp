@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Blog.Models;
+using Blog.Repositories;
 using Dapper.Contrib.Extensions;
 using Microsoft.Data.SqlClient;
 
@@ -30,16 +31,10 @@ class Program
     }
 
     public static void ReadUsers(){
-
-        using(var connection = new SqlConnection(CONNECTION_STRING)){
-            var users = connection.GetAll<User>();
-
-            Console.WriteLine($"Registros encontrados: {users.Count()}");
-
-            foreach(var user in users){
-                Console.WriteLine($"* {user.Id} | {user.Name} | {user.Email}");
-            }
-        }
+        var repository = new UserRepository(CONNECTION_STRING);
+        var users = repository.Get();
+        
+        foreach (var user in users) Console.WriteLine("* " + user.Name);
     }
 
     public static void ReadUser(int id){
@@ -68,9 +63,6 @@ class Program
     }
 
     public static void CreateUser(User user){
-        using(var connection = new SqlConnection(CONNECTION_STRING)){
-            var newUser = connection.Insert<User>(user);
-            Console.WriteLine("Cadastro realizado");
-        }
+        
     }
 }
