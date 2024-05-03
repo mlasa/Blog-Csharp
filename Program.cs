@@ -25,7 +25,7 @@ class Program
         //ReadUser(1);
         //CreateUser(user);
         //UpdateUser(user);
-        DeleteUser(user);
+        //DeleteUser(user);
         ReadUsers();
     }
 
