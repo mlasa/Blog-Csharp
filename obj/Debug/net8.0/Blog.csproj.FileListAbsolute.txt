@@ -54,3 +54,4 @@ E:\Pessoal\Cursos\Balta.io\Blog\obj\Debug\net8.0\refint\Blog.dll
 E:\Pessoal\Cursos\Balta.io\Blog\obj\Debug\net8.0\Blog.pdb
 E:\Pessoal\Cursos\Balta.io\Blog\obj\Debug\net8.0\Blog.genruntimeconfig.cache
 E:\Pessoal\Cursos\Balta.io\Blog\obj\Debug\net8.0\ref\Blog.dll
+E:\Pessoal\Cursos\Balta.io\Blog\obj\Debug\net8.0\Blog.sourcelink.json
