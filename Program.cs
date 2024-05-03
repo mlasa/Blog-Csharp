@@ -12,6 +12,9 @@ class Program
     private const string CONNECTION_STRING = @"Server=localhost,1433;Database=Blog;User ID=sa;Password=root@mlasa00;Trusted_Connection=False; TrustServerCertificate=True;";
     static void Main(string[] args)
     {
+        var  connection = new SqlConnection(CONNECTION_STRING);
+        connection.Open();
+
         var user = new User(){
             Id = 4,
             Name = "Vim",
@@ -23,37 +26,39 @@ class Program
         };
 
         Console.WriteLine("Projeto: Blog\n----------------------\n\n");
-        //ReadUser(1);
-        //CreateUser(user);
-        //UpdateUser(user);
-        //DeleteUser(user);
-        ReadUsers();
+        //ReadUser(1,connection);
+        //CreateUser(user,connection);
+        //UpdateUser(user,connection);
+        //DeleteUser(user,connection);
+        ReadUsers(connection);
+
+        connection.Close();
     }
 
-    public static void ReadUsers(){
-        var repository = new UserRepository(CONNECTION_STRING);
+    public static void ReadUsers(SqlConnection connection){
+        var repository = new UserRepository(connection);
         var users = repository.Get();
         
         foreach (var user in users) Console.WriteLine("* " + user.Name);
     }
 
-    public static void ReadUser(int id){
-        var repository = new UserRepository(CONNECTION_STRING);
+    public static void ReadUser(int id, SqlConnection connection){
+        var repository = new UserRepository(connection);
         repository.Get(id);
     }
 
-    public static void UpdateUser(User user){
-        var repository = new UserRepository(CONNECTION_STRING);
+    public static void UpdateUser(User user, SqlConnection connection){
+        var repository = new UserRepository(connection);
         repository.Update(user);
     }
 
-    public static void DeleteUser(User user){
-        var repository = new UserRepository(CONNECTION_STRING);
+    public static void DeleteUser(User user, SqlConnection connection){
+        var repository = new UserRepository(connection);
         repository.Delete(user);
     }
 
-    public static void CreateUser(User user){
-        var repository = new UserRepository(CONNECTION_STRING);
+    public static void CreateUser(User user, SqlConnection connection){
+        var repository = new UserRepository(connection);
         repository.Create(user);
     }
 }
