@@ -38,31 +38,22 @@ class Program
     }
 
     public static void ReadUser(int id){
-
-        using(var connection = new SqlConnection(CONNECTION_STRING)){
-            var user = connection.Get<User>(id);
-            Console.WriteLine($"* {user.Name}");
-        }
+        var repository = new UserRepository(CONNECTION_STRING);
+        repository.Get(id);
     }
 
     public static void UpdateUser(User user){
-
-        using(var connection = new SqlConnection(CONNECTION_STRING)){
-            var rows = connection.Update<User>(user);
-            if(rows) Console.WriteLine($"Usuário atualizado");
-            else Console.WriteLine("Não foi possível atualizar o registro");
-        }
+        var repository = new UserRepository(CONNECTION_STRING);
+        repository.Update(user);
     }
 
     public static void DeleteUser(User user){
-        Console.WriteLine($"Usuário apagado");
-        using(var connection = new SqlConnection(CONNECTION_STRING)){
-            var rows = connection.Delete<User>(user);
-            Console.WriteLine($"Usuário apagado");
-        }
+        var repository = new UserRepository(CONNECTION_STRING);
+        repository.Delete(user);
     }
 
     public static void CreateUser(User user){
-        
+        var repository = new UserRepository(CONNECTION_STRING);
+        repository.Create(user);
     }
 }
