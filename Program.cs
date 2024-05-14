@@ -16,7 +16,7 @@ class Program
         connection.Open();
 
         var user = new User(){
-            Id = 4,
+            Id= 8,
             Name = "Vim",
             Bio = "Se inspira muito nos terminais",
             Email = "v@gmail.com",
@@ -26,39 +26,33 @@ class Program
         };
 
         Console.WriteLine("Projeto: Blog\n----------------------\n\n");
-        //ReadUser(1,connection);
-        //CreateUser(user,connection);
-        //UpdateUser(user,connection);
-        //DeleteUser(user,connection);
+        //CreateUser(user, connection);
+        DeleteUser(user, connection);
         ReadUsers(connection);
-
+        //ReadRoles(connection);
         connection.Close();
     }
 
     public static void ReadUsers(SqlConnection connection){
-        var repository = new UserRepository(connection);
+        var repository = new Repository<User>(connection);
         var users = repository.Get();
         
-        foreach (var user in users) Console.WriteLine("* " + user.Name);
+        foreach (var user in users) Console.WriteLine("* " + user.Id + user.Name);
     }
-
-    public static void ReadUser(int id, SqlConnection connection){
-        var repository = new UserRepository(connection);
-        repository.Get(id);
+    public static void DeleteUser(User user, SqlConnection connection) {
+        Console.WriteLine("Opa nene");
+                var repository = new Repository<User>(connection);
+            repository.Delete(user);
     }
-
-    public static void UpdateUser(User user, SqlConnection connection){
-        var repository = new UserRepository(connection);
-        repository.Update(user);
-    }
-
-    public static void DeleteUser(User user, SqlConnection connection){
-        var repository = new UserRepository(connection);
-        repository.Delete(user);
-    }
-
     public static void CreateUser(User user, SqlConnection connection){
-        var repository = new UserRepository(connection);
+        var repository = new Repository<User>(connection);
         repository.Create(user);
+    }
+    public static void ReadRoles(SqlConnection connection){
+        var repository = new Repository<Role>(connection);
+        var roles = repository.Get();
+        
+        Console.WriteLine($"Roles:\n");
+        foreach (var rol in roles) Console.WriteLine("* " + rol.Name);
     }
 }
