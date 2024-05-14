@@ -37,10 +37,12 @@ class Program
         var repository = new Repository<User>(connection);
         var users = repository.Get();
         
-        foreach (var user in users) Console.WriteLine("* " + user.Id + user.Name);
+        foreach (var user in users) {
+            Console.WriteLine("* " + user.Name + user.Roles.Count);
+            foreach(var role in user.Roles) Console.WriteLine("- oba" + role.Name);
+        }
     }
     public static void DeleteUser(User user, SqlConnection connection) {
-        Console.WriteLine("Opa nene");
                 var repository = new Repository<User>(connection);
             repository.Delete(user);
     }
