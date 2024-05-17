@@ -16,31 +16,27 @@ class Program
         connection.Open();
 
         var user = new User(){
-            Id= 8,
-            Name = "Vim",
-            Bio = "Se inspira muito nos terminais",
-            Email = "v@gmail.com",
-            Image = "v.jpg",
+            //Id= 8,
+            Name = "Fanuel Vander",
+            Bio = "Enfermeiro muito querido pelos pacientes",
+            Email = "fanuel@email.com",
+            Image = "fanu.jpg",
             PasswordHash = "HASH",
-            Slug = "v-term"
+            Slug = "fanuelvander"
         };
 
+        Console.Clear();
         Console.WriteLine("Projeto: Blog\n----------------------\n\n");
         //CreateUser(user, connection);
-        DeleteUser(user, connection);
-        ReadUsers(connection);
+        //DeleteUser(user, connection);
+        ReadUsersWithRoles(connection);
         //ReadRoles(connection);
         connection.Close();
     }
 
-    public static void ReadUsers(SqlConnection connection){
-        var repository = new Repository<User>(connection);
-        var users = repository.Get();
-        
-        foreach (var user in users) {
-            Console.WriteLine("* " + user.Name + user.Roles.Count);
-            foreach(var role in user.Roles) Console.WriteLine("- oba" + role.Name);
-        }
+    public static void ReadUsersWithRoles(SqlConnection connection){
+        var repository = new UserRepository(connection);
+        var users = repository.GetUsersWithRoles();
     }
     public static void DeleteUser(User user, SqlConnection connection) {
                 var repository = new Repository<User>(connection);
