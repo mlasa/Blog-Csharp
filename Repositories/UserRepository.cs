@@ -7,9 +7,6 @@ using Microsoft.Data.SqlClient;
 
 namespace Blog.Repositories{
     public class UserRepository:Repository<User>{
-        private readonly SqlConnection _connection;
-        public UserRepository(SqlConnection connection)
-        :base(connection) =>  _connection = connection;
 
         public List<User> GetUsersWithRoles(){
             var sql = @"
@@ -21,7 +18,7 @@ namespace Blog.Repositories{
 
             var users = new List<User>();
 
-            var items = _connection.Query<User, Role, User>(
+            var items = Database.Connection.Query<User, Role, User>(
                 sql,
                 (user, role) => 
                 {

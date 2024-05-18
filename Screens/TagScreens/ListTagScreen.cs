@@ -11,7 +11,7 @@ namespace Blog.Screens.TagScreens{
         }
 
         public static void List(){
-            var repository = new Repository<Tag>(Database.Connection);
+            var repository = new Repository<Tag>();
             var tags = repository.Get();
             foreach (var tag in tags){
                 Console.WriteLine($" - {tag.Name}");

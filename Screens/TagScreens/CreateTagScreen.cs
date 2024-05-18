@@ -18,7 +18,7 @@ namespace Blog.Screens.TagScreens{
             Create(newTag);
         }
         public static void Create(Tag tag){
-            var repository = new Repository<Tag>(Database.Connection);
+            var repository = new Repository<Tag>();
             repository.Create(tag);
             Console.WriteLine("Tag criada");
         }
