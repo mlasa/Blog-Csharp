@@ -10,7 +10,7 @@ namespace Blog.Repositories{
          public void Create(T t)  => Database.Connection.Insert<T>(t);
         public void Delete(T t) => Database.Connection.Delete<T>(t);
         public void Delete(int id) {
-            if(id!= 0) return;
+            if(id== 0) return;
             
             var t = Database.Connection.Get<T>(id);
              Database.Connection.Delete<T>(t);

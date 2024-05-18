@@ -20,7 +20,10 @@ namespace Blog.Screens.TagScreens{
         public static void Create(Tag tag){
             var repository = new Repository<Tag>();
             repository.Create(tag);
-            Console.WriteLine("Tag criada");
+            Console.WriteLine("Tag criada");            
+            Console.WriteLine("");
+
+            MenuTagScreen.Load();
         }
     }
 }

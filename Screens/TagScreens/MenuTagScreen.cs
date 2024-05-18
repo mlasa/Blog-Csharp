@@ -5,10 +5,9 @@ namespace Blog.Screens.TagScreens{
         public static void Load(){
             Console.WriteLine("**** Gestão de Tags ****");
             Console.WriteLine("O que deseja fazer?");
-            Console.WriteLine(@"
-                1 - Listas tags
-                2 - Cadastrar tags
-            ");
+            Console.WriteLine("1 - Listas tags");
+            Console.WriteLine("2 - Cadastrar tag");
+            Console.WriteLine("3 - Deletar tag");
             var option = short.Parse(Console.ReadLine()!);
             Console.WriteLine("\n");
 
@@ -18,6 +17,9 @@ namespace Blog.Screens.TagScreens{
                     break;
                 case 2: 
                     CreateTagScreen.Load(); 
+                    break;
+                case 3: 
+                    DeleteTagScreen.Load(); 
                     break;
                 default:
                     Load(); 
