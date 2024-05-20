@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using Blog.Models;
 using Blog.Repositories;
 
 namespace Blog.Screens.UserScreens{

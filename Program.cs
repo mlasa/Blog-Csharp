@@ -20,14 +20,15 @@ class Program
     }
 
     public static void Load(){
-        Console.WriteLine("1 - Gestão de usuário [🚧 em construcao]");
+        Console.WriteLine("========================-: MENU :-=========================");
+        Console.WriteLine("1 - Gestão de usuário");
         Console.WriteLine("2 - Gestão de perfil [🚧 em construcao]");
         Console.WriteLine("3 - Gestão de categoria [🚧 em construcao]");
         Console.WriteLine("4 - Gestão de tag");
         Console.WriteLine("5 - Vincular perfil/usuário [🚧 em construcao]");
         Console.WriteLine("6 - Vincular post/tag [🚧 em construcao]");
         Console.WriteLine("7 - Relatórios [🚧 em construcao]");
-        Console.WriteLine("\n");
+        Console.WriteLine("======================================================\n");
         var option = short.Parse(Console.ReadLine()!);
 
         switch (option)

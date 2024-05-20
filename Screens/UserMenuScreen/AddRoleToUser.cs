@@ -8,6 +8,14 @@ namespace Blog.Screens.UserScreens{
             Console.WriteLine("A qual usuário quer adicionar um novo perfil? Digite o id:");
             var userId = int.Parse( Console.ReadLine()!.Trim());
             var user = GetUser(userId);
+            if(user == null){
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Usuário não encontrado");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                UserMenuScreen.Load();
+                return;
+            }
+
             Console.WriteLine($"Buscando... \nConfirme:{userId} | {user.Name} |{user.Email}");
             Console.WriteLine("Digite s ou n");
             var userConfirmed = Console.ReadLine()!;
@@ -16,6 +24,13 @@ namespace Blog.Screens.UserScreens{
                 Console.WriteLine("Qual role vai ser adicionada ao usuário? Digite o id:");
                 var roleId = int.Parse(Console.ReadLine()!.Trim());
                 var role = GetRole(roleId);
+                if(role == null){
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Perfil não encontrado");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    UserMenuScreen.Load();
+                    return;
+                }
                 Console.WriteLine($"Confirme: {role.Id} | {role.Name} \nDigite s ou n");
                 var roleConfirm = Console.ReadLine()!;
 
