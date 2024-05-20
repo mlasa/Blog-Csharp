@@ -8,10 +8,14 @@ namespace Blog.Screens.TagScreens{
             Console.WriteLine("1 - Listas tags");
             Console.WriteLine("2 - Cadastrar tag");
             Console.WriteLine("3 - Deletar tag");
+            Console.WriteLine("0 - Menu inicial");
             var option = short.Parse(Console.ReadLine()!);
             Console.WriteLine("\n");
 
             switch(option){
+                case 0:  
+                    Program.Load(); 
+                    break;
                 case 1:  
                     ListTagScreen.Load(); 
                     break;

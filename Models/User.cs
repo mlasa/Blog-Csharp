@@ -5,7 +5,22 @@ namespace Blog.Models{
     [Table("[User]")]
     public class User{
 
-        public User() => Roles = new List<Role>();
+        public User(string name, string email, string password, string bio, string slug, string image) {
+            Roles = new List<Role>();
+            Name = name;
+            Email = email;
+            PasswordHash = password;
+            Bio = bio;
+            Image = image;
+            Slug = slug;
+        }
+
+        //Construtor sem parâmetros
+        //System.InvalidOperationException: A parameterless default constructor or one matching signature
+        public User()
+        {
+            Roles = new List<Role>();
+        }
 
         public int Id { get; set; }
         public string Name { get; set; }
