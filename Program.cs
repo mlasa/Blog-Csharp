@@ -2,6 +2,7 @@
 using Blog.Screens.TagScreens;
 using Blog.Models;
 using Microsoft.Data.SqlClient;
+using Blog.Screens.UserScreens;
 
 namespace Blog;
 
@@ -31,6 +32,9 @@ class Program
 
         switch (option)
         {
+            case 1: 
+                UserMenuScreen.Load();
+                break;
             case 4:
                 MenuTagScreen.Load();
                 break;

@@ -36,12 +36,6 @@ namespace Blog.Repositories{
                 splitOn: "Id"
             );
 
-           foreach (var user in users) {
-            Console.WriteLine("* " + user.Name + " | Quantidade de perfis: " + user.Roles.Count);
-            
-            foreach(var role in user.Roles) Console.WriteLine("- " + role.Name);
-        }
-
             return users;
         }
     }
