@@ -20,7 +20,10 @@ class Program
     }
 
     public static void Load(){
+        Console.WriteLine("...........................................................");
         Console.WriteLine("========================-: MENU :-=========================");
+        Console.WriteLine("........................................................... \n");
+
         Console.WriteLine("1 - Gestão de usuário");
         Console.WriteLine("2 - Gestão de perfil [🚧 em construcao]");
         Console.WriteLine("3 - Gestão de categoria [🚧 em construcao]");

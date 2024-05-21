@@ -16,8 +16,9 @@ namespace Blog.Screens.UserScreens{
 
             var repository = new UserRepository();
             var users = repository.GetUsersWithRoles();
+            Console.WriteLine($"{users.Count} registros encontrados");
             foreach (var user in users){
-                Console.WriteLine($" * {user.Id}  {user.Name} | {user.Email}| {string.Join(", ", user.Roles.Select(role => role.Name))}");
+                Console.WriteLine($" * {user.Id} | {user.Name} | {user.Email} | {string.Join(", ", user.Roles.Select(role => role.Name))}");
             }
             
             Console.ForegroundColor = ConsoleColor.Gray;

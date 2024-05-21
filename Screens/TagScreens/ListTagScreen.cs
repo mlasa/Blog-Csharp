@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Blog.Models;
 using Blog.Repositories;
 
@@ -16,8 +17,9 @@ namespace Blog.Screens.TagScreens{
 
             var repository = new Repository<Tag>();
             var tags = repository.Get();
+            Console.WriteLine($"{tags.Count()} registros encontrados");
             foreach (var tag in tags){
-                Console.WriteLine($" - {tag.Name} | Id: {tag.Id}");
+                Console.WriteLine($" - {tag.Id} | {tag.Name}");
             }
             
             Console.ForegroundColor = ConsoleColor.Gray;

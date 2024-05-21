@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Blog.Models;
 using Blog.Repositories;
 namespace Blog.Screens.UserScreens{
@@ -20,14 +21,14 @@ namespace Blog.Screens.UserScreens{
                 return;
             }
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"{user.Id} | {user.Name} | {user.Email}");
+            Console.WriteLine($"{user.Id} | {user.Name} | {user.Email} | {string.Join(", ", user.Roles.Select(role => role.Name))}\n");
             Console.ForegroundColor = ConsoleColor.Gray;
             Program.Load();
         }
 
-        private static User FindUser(int userId){
-            var repository = new Repository<User>();
-            return repository.Get(userId);
+        private static User? FindUser(int userId){
+            var repository = new UserRepository();
+            return repository.FindUserWithRoles(userId);
         }
     }
 }
